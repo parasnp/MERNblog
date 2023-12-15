@@ -1,0 +1,31 @@
+<%- include('partials/head') %>   
+    <title>Register User</title>
+   
+  </head>
+  <body>
+    <%- include('partials/nav') %>
+    <div class="container p-5">
+        <h1>Blog Away</h1>
+        <h3>Sign Up</h3>  
+          
+        <form action="/registerUser" method="post">    
+          <div class="mb-3">
+            <label for="name" class="form-label">Auther name</label>
+            <input type="text" class="form-control" name="name">
+            <div id="nameError"></div>
+          </div>     
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="email">
+            <div id="emailError"></div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password">
+            <div id="passwordError"></div>
+          </div>
+          <button type="submit" class="btn logInBtn">Register</button>
+        </form>
+    </div>
+    <%- include('partials/end') %>
+   

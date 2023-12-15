@@ -1,0 +1,19 @@
+<%- include('../partials/head') %>   
+    <title>Blog Away</title>
+</head>
+
+<%- include('../partials/navDash') %>
+<div class="container" >
+<div class="admin-title">
+    <h2>Edit Post</h2>
+</div>
+<form action="/addPost" method="post">
+    <label for="blogTitle">Title</label>
+    <input type="text" value="<%= data.blogTitle %>"  name="blogTitle">
+    <label for="blogContent">Content</label>
+    <textarea name="blogContent" id="blogContent" cols="50" rows="10"> <%= data.blogContent%></textarea>    
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+</div>
+
+<%- include('../partials/end') %>

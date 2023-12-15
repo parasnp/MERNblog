@@ -1,0 +1,48 @@
+<%- include('../partials/head') %>   
+    <title>Blog Away</title>
+
+
+</head>
+<%- include('../partials/navDash') %>
+<div class="container"> 
+    <div class="dashNewPost">
+        <div>
+          <h2>Admin Dashboard</h2>
+        </div>
+        <div>
+            <a href="/addPost" class="btn btn-info">Add New post</a>
+        </div>
+    </div>
+    <div class="dashSearch">
+         <form action="/search/?page=dash" method="post">            
+             <input type="text" class="form-control searchInput" name="searchTerm" placeholder="search....">
+         </form>
+    </div>    
+    <div class="dashGrid"> 
+        <% if (allPostData.length=== 0){%>
+            <p>No Post available, please click on Add Post button</p>
+        <% } %>
+        <% for(let el of allPostData){%>
+                <div class="dashGridItems">   
+                    <a href="#"> <%= el.blogTitle %> &nbsp; &nbsp;by &nbsp;  <%= el.blogAuthor %> &nbsp; updated on &nbsp;  <%= new Intl.DateTimeFormat('en-US', { day: 'numeric', month: 'short', year: 'numeric' }).format(el.createdOn) %></a>                                                 
+                </div> 
+                <div class="dashGridItems">                     
+                    <a href="/editPost/<%= el._id %>" class="btn dashBtnEdit">Edit</a>                                   
+                </div> 
+
+                    <div class="dashGridItems">
+                        <form action="/deletePost" method="post" >
+                            <input type="hidden" value="<%= el._id %>" name="_id">
+                              <button type="submit" class="btn dashBtnDelete">Delete</button>                            
+                            </form>                
+                        </div> 
+                
+        <%}%>
+    </div>
+
+    <% if (nextPage !==null){%>
+        <a href="/dashboard?page=<%= nextPage %>" class="pagination">&lt; View older posts</a>
+    <% } %>
+</div>
+
+<%- include('../partials/end') %>
